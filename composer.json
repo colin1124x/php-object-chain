@@ -1,0 +1,23 @@
+{
+    "name": "colin/php-object-chain",
+    "description": "物件索引鍊",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Colin",
+            "email": "colin1124x@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">= 5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Colin\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
