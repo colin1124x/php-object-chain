@@ -13,7 +13,8 @@ class ObjectChain implements ArrayAccess, Iterator
 
     public function __construct($o = null)
     {
-        $this->resource = $o;
+        $o = $o instanceof self ? $o->value() : $o;
+
         if (is_array($o) || $o instanceof ArrayAccess) {
             $value_exists = function($o, $ind){return isset($o[$ind]);};
             $value_get = function($o, $ind){return isset($o[$ind]) ? $o[$ind] : null;};
@@ -30,6 +31,7 @@ class ObjectChain implements ArrayAccess, Iterator
             $value_unset = function($o, $ind){};
         }
 
+        $this->resource = $o;
         $this->value_exists = $value_exists;
         $this->value_get = $value_get;
         $this->value_unset = $value_unset;

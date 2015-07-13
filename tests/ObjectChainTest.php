@@ -33,6 +33,19 @@ class ObjectChainTest extends PHPUnit_Framework_TestCase
         $this->assertNull($data->{'x'}->{'y'}->{'z'}->value());
     }
 
+    public function testSelf()
+    {
+        $o = $this->buildStdClass();
+
+        $data = new \Colin\ObjectChain(new \Colin\ObjectChain($o));
+
+        $this->assertEquals(123, $data->{'int'}->value());
+        $this->assertEquals("xxx", $data->{'string'}->value());
+        $this->assertEquals("inside-value", $data->{'obj'}->{'inside'}->value());
+        $this->assertEquals(array(1,2,3), $data->{'array'}->value());
+        $this->assertNull($data->{'x'}->{'y'}->{'z'}->value());
+    }
+
     public function testIterator()
     {
         $o = $this->buildStdClass();
